@@ -1,0 +1,27 @@
+.squares {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    font-size: 62pt;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.lockedSize {
+    min-width: 320px;
+}
+
+.xSquares {
+    background-color: red;
+    color: white;
+}
+
+.oSquares {
+    background-color: blue;
+    color: white;
+}

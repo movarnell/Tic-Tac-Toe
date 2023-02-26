@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/js/bootstrap.bundle.js">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+<h1 class="display-1 text-center" id="title">Tic-Tac-Toe</h1>
+<div class="row text-center">
+    <div class="col"><p class="fw-bolder" id="currentPlayerText">Let's Play!</p></div>
+</div>
+<section>
+    <div class="container text-center">
+        <div class="row">
+        <div class="col">
+            <p class="lead fw-bolder text-center mt-4">Player X has won: <span id="xWins">0</span></p>
+        </div>
+        <!-- BOARD START -->
+        <div class="col-md-8 col-sm-12 lockedSize" >
+        <div class="row justify-content-center">
+            <div class="squares" data-value="1" id="sq1"></div>
+            <div class="squares" data-value="2" id="sq2"></div>
+            <div class="squares" data-value="3" id="sq3"></div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="squares" data-value="4" id="sq4"></div>
+            <div class="squares" data-value="5" id="sq5"></div>
+            <div class="squares" data-value="6" id="sq6"></div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="squares" data-value="7" id="sq7"></div>
+            <div class="squares" data-value="8" id="sq8"></div>
+            <div class="squares" data-value="9" id="sq9"></div>
+        </div>
+        </div>
+        <!-- BOARD END -->
+        <div class="col"><p class="lead fw-bolder text-center mt-4">Player O has won: <span id="oWins">0</span></p>
+        </div>
+    </div>
+        <div class="row text-center">
+            <div class="col"><button class="btn btn-primary m-4" id="resetBtn">RESET BOARD</button></div>
+       
+            <div class="col"><button class="btn btn-outline-primary m-4" id="resetScoresBtn">RESET SCORES</button></div>
+        </div>
+    </div>
+
+</section>
+
+    
+    <!-- SCRIPTS -->
+    <script src="script.js"></script>
+   
+</body>
+</html>
