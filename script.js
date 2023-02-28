@@ -25,27 +25,11 @@ let currentPlayer = "X";
 const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
 const buttons = document.querySelectorAll("button");
 
-
-
-
-document.getElementById('sq1').addEventListener('click', () => { markPlay(sq1, 1) });
-document.getElementById('sq1').addEventListener('click', () => { audio.play() });
-document.getElementById('sq2').addEventListener('click', () => { markPlay(sq2, 2) });
-document.getElementById('sq2').addEventListener('click', () => { audio.play() });
-document.getElementById('sq3').addEventListener('click', () => { markPlay(sq3, 3) });
-document.getElementById('sq3').addEventListener('click', () => { audio.play() });
-document.getElementById('sq4').addEventListener('click', () => { markPlay(sq4, 4) });
-document.getElementById('sq4').addEventListener('click', () => { audio.play() });
-document.getElementById('sq5').addEventListener('click', () => { markPlay(sq5, 5) });
-document.getElementById('sq5').addEventListener('click', () => { audio.play() });
-document.getElementById('sq6').addEventListener('click', () => { markPlay(sq6, 6) });
-document.getElementById('sq6').addEventListener('click', () => { audio.play() });
-document.getElementById('sq7').addEventListener('click', () => { markPlay(sq7, 7) });
-document.getElementById('sq7').addEventListener('click', () => { audio.play() });
-document.getElementById('sq8').addEventListener('click', () => { markPlay(sq8, 8) });
-document.getElementById('sq8').addEventListener('click', () => { audio.play() });
-document.getElementById('sq9').addEventListener('click', () => { markPlay(sq9, 9) });
-document.getElementById('sq9').addEventListener('click', () => { audio.play() });
+for (let i = 0; i < 9; i++) {
+    document.getElementById(sqEleArray[i]).addEventListener('click', () => { markPlay(sqArray[i], i + 1) });
+    document.getElementById(sqEleArray[i]).addEventListener('click', () => { audio.play() });
+    console.log(i + 1);
+}
 
 document.getElementById('resetBtn').addEventListener('click', () => { resetBoard() });
 document.getElementById('resetScoresBtn').addEventListener('click', () => { resetScore() });
@@ -94,7 +78,6 @@ function currentPlayerSwitch() {
 
 function checkForWinner() {
 
-    console.log(playerXMoves.includes("1"))
     if (playerXMoves.includes(1) && playerXMoves.includes(2) && playerXMoves.includes(3)) {
         playerXWin();
     } else if (playerXMoves.includes(4) && playerXMoves.includes(5) && playerXMoves.includes(6)) {
@@ -131,17 +114,10 @@ function checkForWinner() {
         $('#title').after(`<div class="alert alert-warning text-center fw-bold" role="alert" id="winner">
         TIE no winner this time!
       </div>`);
-        $('#sq1').replaceWith($('#sq1').clone());
-        $('#sq2').replaceWith($('#sq2').clone());
-        $('#sq3').replaceWith($('#sq3').clone());
-        $('#sq4').replaceWith($('#sq4').clone());
-        $('#sq5').replaceWith($('#sq5').clone());
-        $('#sq6').replaceWith($('#sq6').clone());
-        $('#sq7').replaceWith($('#sq7').clone());
-        $('#sq8').replaceWith($('#sq8').clone());
-        $('#sq9').replaceWith($('#sq9').clone());
+        for (let i = 0; i < 9; i++) {
+            $(sqEleTagArray[i]).replaceWith($(sqEleTagArray[i]).clone());
+        }
     }
-
 }
 
 
@@ -152,15 +128,9 @@ function playerXWin() {
     console.log("Player X Wins")
     playerXWinCount += 1;
     $('#xWins').text(playerXWinCount);
-    $('#sq1').replaceWith($('#sq1').clone());
-    $('#sq2').replaceWith($('#sq2').clone());
-    $('#sq3').replaceWith($('#sq3').clone());
-    $('#sq4').replaceWith($('#sq4').clone());
-    $('#sq5').replaceWith($('#sq5').clone());
-    $('#sq6').replaceWith($('#sq6').clone());
-    $('#sq7').replaceWith($('#sq7').clone());
-    $('#sq8').replaceWith($('#sq8').clone());
-    $('#sq9').replaceWith($('#sq9').clone());
+    for (let i = 0; i < 9; i++) {
+        $(sqEleTagArray[i]).replaceWith($(sqEleTagArray[i]).clone());
+    }
     const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/531");
     audio.play();
 
@@ -172,15 +142,10 @@ function playerOWin() {
   </div>`)
     playerOWinCount += 1;
     $('#oWins').text(playerOWinCount);
-    $('#sq1').replaceWith($('#sq1').clone());
-    $('#sq2').replaceWith($('#sq2').clone());
-    $('#sq3').replaceWith($('#sq3').clone());
-    $('#sq4').replaceWith($('#sq4').clone());
-    $('#sq5').replaceWith($('#sq5').clone());
-    $('#sq6').replaceWith($('#sq6').clone());
-    $('#sq7').replaceWith($('#sq7').clone());
-    $('#sq8').replaceWith($('#sq8').clone());
-    $('#sq9').replaceWith($('#sq9').clone());
+    for (let i = 0; i < 9; i++) {
+        $(sqEleTagArray[i]).replaceWith($(sqEleTagArray[i]).clone());
+    }
+
     const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/531");
     audio.play();
 }
@@ -189,18 +154,18 @@ function resetBoard() {
     const resetAudio = new Audio("https://www.fesliyanstudios.com/play-mp3/516");
     resetAudio.play();
 
+    for (i = 0; i < 9; i++) {
+        $(sqEleTagArray[i]).empty("");
+    }
 
-    $("#sq1").empty("");
-    $("#sq2").empty("");
-    $("#sq3").empty("");
-    $("#sq4").empty("");
-    $("#sq5").empty("");
-    $("#sq6").empty("");
-    $("#sq7").empty("");
-    $("#sq8").empty("");
-    $("#sq9").empty("");
     $('#winner').remove();
 
+    // NOT SURE WHY THE FOR LOOP BELOW WON"T REPLACE THE CODE BELOW IT HERE WITHOUT BREAKING THE ACTIONS. 
+    // for (let i = 0; i < 9; i++) {
+    //     document.getElementById(sqEleArray[i]).addEventListener('click', () => { markPlay(sqArray[i], i + 1) });
+    //     document.getElementById(sqEleArray[i]).addEventListener('click', () => { audio.play() });
+    //     console.log(i + 1);
+    // }
     document.getElementById('sq1').addEventListener('click', () => { markPlay(sq1, 1) });
     document.getElementById('sq1').addEventListener('click', () => { audio.play() });
     document.getElementById('sq2').addEventListener('click', () => { markPlay(sq2, 2) });
@@ -220,16 +185,10 @@ function resetBoard() {
     document.getElementById('sq9').addEventListener('click', () => { markPlay(sq9, 9) });
     document.getElementById('sq9').addEventListener('click', () => { audio.play() });
 
+    for (let i = 0; i < 9; i++) {
+        document.getElementById(sqEleArray[i]).className = "squares";
 
-    document.getElementById("sq1").className = "squares";
-    document.getElementById("sq2").className = "squares";
-    document.getElementById("sq3").className = "squares";
-    document.getElementById("sq4").className = "squares";
-    document.getElementById("sq5").className = "squares";
-    document.getElementById("sq6").className = "squares";
-    document.getElementById("sq7").className = "squares";
-    document.getElementById("sq8").className = "squares";
-    document.getElementById("sq9").className = "squares";
+    }
 
     playerOMoves = [];
     playerXMoves = [];
@@ -237,6 +196,7 @@ function resetBoard() {
     console.log(playerOMoves);
     console.log(playerXMoves);
     console.log(board);
+
 
     let sq1 = $('#sq1');
     let sq2 = $('#sq2');
