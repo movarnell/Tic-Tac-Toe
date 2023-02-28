@@ -16,6 +16,10 @@ let sq7 = $('#sq7');
 let sq8 = $('#sq8');
 let sq9 = $('#sq9');
 
+const sqArray = [sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9];
+const sqEleArray = ['sq1', 'sq2', 'sq3', 'sq4', 'sq5', 'sq6', 'sq7', 'sq8', 'sq9'];
+const sqEleTagArray = ['#sq1', '#sq2', '#sq3', '#sq4', '#sq5', '#sq6', '#sq7', '#sq8', '#sq9'];
+
 let currentPlayer = "X";
 
 const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
